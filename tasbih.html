@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>السبحة الإلكترونية - موقع آيات</title>
+    <meta name="description" content="السبحة الإلكترونية لعد الأذكار والتسبيح - موقع آيات للقرآن الكريم">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#1a5e63">
+    <meta property="og:title" content="السبحة الإلكترونية - موقع آيات">
+    <meta property="og:description" content="السبحة الإلكترونية لعد الأذكار والتسبيح - موقع آيات للقرآن الكريم">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ayatshare.com/tasbih.html">
+    <meta property="og:image" content="https://ayatshare.com/img/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://ayatshare.com/img/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="السبحة الإلكترونية من موقع آيات">
+    <meta property="og:locale" content="ar_AR">
+    <meta property="og:site_name" content="موقع آيات">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="السبحة الإلكترونية - موقع آيات">
+    <meta name="twitter:description" content="السبحة الإلكترونية لعد الأذكار والتسبيح - موقع آيات للقرآن الكريم">
+    <meta name="twitter:image" content="https://ayatshare.com/img/og-image.jpg">
+    <meta name="twitter:image:alt" content="السبحة الإلكترونية من موقع آيات">
+    <meta name="twitter:site" content="@ayatshare">
+    <link rel="canonical" href="https://ayatshare.com/tasbih.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body class="tasbih-page">
+    <header role="banner">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-book-quran"></i>
+                    <span>آيات</span>
+                </div>
+                <p class="subtitle">موقع آيات لعرض ومشاركة آيات الله</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" role="main">
+        <h1 class="page-title">السبحة الإلكترونية</h1>
+        
+        <div class="tasbih-container">
+
+            <div class="current-dhikr-card">
+                <span class="dhikr-text" id="activeDhikr">سبحان الله وبحمده</span>
+            </div>
+
+            <div class="counter-body">
+                <div class="screen-frame">
+                    <div class="lcd-display" id="display">0</div>
+                </div>
+                <span class="reset-label">RESET</span>
+                <button class="reset-btn" id="resetBtn" aria-label="إعادة العداد"></button>
+                <button class="count-btn" id="countBtn">اضغط</button>
+            </div>
+
+            <div class="bottom-controls">
+                <button class="control-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-home"></i>
+                    <span>الرئيسية</span>
+                </button>
+                <button class="control-btn" onclick="openAzkar()">
+                    <i class="fas fa-list"></i>
+                    <span>الأذكار</span>
+                </button>
+                <button class="control-btn" onclick="addNewDhikr()">
+                    <i class="fas fa-plus"></i>
+                    <span>إضافة ذكر</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <div id="azkarOverlay" class="azkar-overlay">
+        <div class="overlay-header">
+            <button onclick="closeAzkar()" class="back-btn">
+                <i class="fas fa-arrow-right"></i> رجوع
+            </button>
+            <h2>الأذكار المحفوظة</h2>
+            <button onclick="openAddDhikr()" class="overlay-add-btn">
+                <i class="fas fa-plus"></i> إضافة
+            </button>
+        </div>
+        <div id="azkarList"></div>
+    </div>
+
+    <!-- نافذة إضافة ذكر -->
+    <div id="addDhikrOverlay" class="add-dhikr-overlay">
+        <div class="add-dhikr-modal">
+            <h2>أضف ذكراً جديداً</h2>
+            <input type="text" id="newDhikrInput" class="add-dhikr-input" placeholder="اكتب الذكر هنا..." />
+            <div class="add-dhikr-buttons">
+                <button class="add-dhikr-confirm" onclick="confirmAddDhikr()">إضافة</button>
+                <button class="add-dhikr-cancel" onclick="closeAddDhikr()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة تأكيد الـ Reset -->
+    <div id="confirmOverlay" class="confirm-overlay">
+        <div class="confirm-modal">
+            <p>هل تريد إعادة العداد إلى صفر؟</p>
+            <div class="confirm-buttons">
+                <button class="confirm-yes" onclick="doReset()">نعم، إعادة</button>
+                <button class="confirm-no" onclick="closeConfirm()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <p>آيات القرآن الكريم</p><br>
+                <p style="background-color: #1a5e63; color: #fff; padding: 8px 12px; border-radius: 6px; display: inline-block; font-weight: bold;">
+                    صدقة جارية عن أبي وأمي
+                </p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/emam.v1" aria-label="صفحتنا على فيسبوك"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/emamv1_" aria-label="حسابنا على تويتر"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/emam.v1" aria-label="حسابنا على إنستغرام"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.youtube.com/@emam.v1" aria-label="قناتنا على يوتيوب"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                </div>
+                <a href="about.html" style="color:#f1c40f; text-decoration:none; font-weight:bold;">من نحن</a>
+                <p class="copyright">جميع الحقوق محفوظة &copy; 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const display = document.getElementById('display');
+        const countBtn = document.getElementById('countBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const activeDhikrLabel = document.getElementById('activeDhikr');
+
+        let count = parseInt(localStorage.getItem('ayatTasbihCount')) || 0;
+        let activeDhikrText = localStorage.getItem('ayatActiveDhikr') || "سبحان الله وبحمده";
+
+        const defaultAzkar = [
+            "سبحان الله",
+            "الحمد لله",
+            "لا إله إلا الله",
+            "الله أكبر",
+            "لا حول ولا قوة إلا بالله",
+            "سبحان الله وبحمده",
+            "سبحان الله العظيم",
+            "أستغفر الله",
+            "اللهم صل على محمد",
+            "لا إله إلا أنت سبحانك إني كنت من الظالمين",
+            "حسبي الله ونعم الوكيل",
+            "سبحان الله وبحمده عدد خلقه ورضا نفسه وزنة عرشه ومداد كلماته",
+            "اللهم إنك عفو كريم تحب العفو فاعف عني",
+            "رب اغفر لي ولوالدي",
+            "اللهم إني أسألك العفو والعافية"
+        ];
+
+        let dhikrList = JSON.parse(localStorage.getItem('ayatMyAzkarList')) || defaultAzkar;
+
+        function init() {
+            display.innerText = count;
+            activeDhikrLabel.innerText = activeDhikrText;
+        }
+
+        function handleStart(e) {
+            if (e) e.preventDefault();
+            countBtn.classList.add('is-active');
+            count++;
+            display.innerText = count;
+            localStorage.setItem('ayatTasbihCount', count);
+        }
+
+        function handleResetStart(e) {
+            if (e) e.preventDefault();
+            openConfirm();
+        }
+
+        function openConfirm() {
+            document.getElementById('confirmOverlay').style.display = 'flex';
+        }
+
+        function closeConfirm() {
+            document.getElementById('confirmOverlay').style.display = 'none';
+        }
+
+        function doReset() {
+            resetBtn.classList.add('is-active');
+            setTimeout(() => resetBtn.classList.remove('is-active'), 150);
+            count = 0;
+            display.textContent = count;
+            localStorage.setItem('ayatTasbihCount', count);
+            closeConfirm();
+            showToast("تم إعادة العداد");
+        }
+
+        countBtn.addEventListener('touchstart', handleStart, { passive: false });
+        countBtn.addEventListener('touchend', () => countBtn.classList.remove('is-active'));
+        countBtn.addEventListener('mousedown', (e) => {
+            if (!('ontouchstart' in window)) handleStart(e);
+        });
+        window.addEventListener('mouseup', () => countBtn.classList.remove('is-active'));
+
+        resetBtn.addEventListener('touchstart', handleResetStart, { passive: false });
+        resetBtn.addEventListener('touchend', () => resetBtn.classList.remove('is-active'));
+        resetBtn.addEventListener('mousedown', (e) => {
+            if (!('ontouchstart' in window)) handleResetStart(e);
+        });
+        window.addEventListener('mouseup', () => resetBtn.classList.remove('is-active'));
+
+        function renderAzkar() {
+            const listDiv = document.getElementById('azkarList');
+            const fragment = document.createDocumentFragment();
+            dhikrList.forEach((text, index) => {
+                const isDefault = defaultAzkar.includes(text);
+                const row = document.createElement('div');
+                row.className = 'dhikr-row';
+
+                const item = document.createElement('div');
+                item.className = 'dhikr-item';
+                item.textContent = text;
+                item.onclick = () => selectDhikr(text);
+                row.appendChild(item);
+
+                if (!isDefault) {
+                    const delBtn = document.createElement('button');
+                    delBtn.className = 'delete-dhikr-btn';
+                    delBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                    delBtn.onclick = () => deleteDhikr(index);
+                    row.appendChild(delBtn);
+                }
+
+                fragment.appendChild(row);
+            });
+            listDiv.innerHTML = '';
+            listDiv.appendChild(fragment);
+        }
+
+        function openAzkar() {
+            renderAzkar();
+            document.getElementById('azkarOverlay').style.display = 'flex';
+        }
+
+        function closeAzkar() {
+            document.getElementById('azkarOverlay').style.display = 'none';
+        }
+
+        function openAddDhikr() {
+            document.getElementById('newDhikrInput').value = '';
+            document.getElementById('addDhikrOverlay').style.display = 'flex';
+            setTimeout(() => document.getElementById('newDhikrInput').focus(), 100);
+        }
+
+        function closeAddDhikr() {
+            document.getElementById('addDhikrOverlay').style.display = 'none';
+        }
+
+        function confirmAddDhikr() {
+            const newTxt = document.getElementById('newDhikrInput').value.trim();
+            if (newTxt !== "") {
+                dhikrList.push(newTxt);
+                localStorage.setItem('ayatMyAzkarList', JSON.stringify(dhikrList));
+                renderAzkar();
+                closeAddDhikr();
+                showToast("تمت إضافة الذكر بنجاح");
+            }
+        }
+
+        
+        document.getElementById('newDhikrInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') confirmAddDhikr();
+            if (e.key === 'Escape') closeAddDhikr();
+        });
+
+        function selectDhikr(text) {
+            activeDhikrText = text;
+            activeDhikrLabel.innerText = text;
+            count = 0;
+            display.innerText = count;
+            localStorage.setItem('ayatActiveDhikr', text);
+            localStorage.setItem('ayatTasbihCount', 0);
+            closeAzkar();
+            showToast("تم اختيار الذكر");
+        }
+
+        function deleteDhikr(index) {
+            if (confirm("هل تريد حذف هذا الذكر؟")) {
+                dhikrList.splice(index, 1);
+                localStorage.setItem('ayatMyAzkarList', JSON.stringify(dhikrList));
+                renderAzkar();
+                showToast("تم حذف الذكر");
+            }
+        }
+
+        function addNewDhikr() {
+            openAddDhikr();
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast-msg';
+            toast.innerText = message;
+            document.body.appendChild(toast);
+            setTimeout(() => { toast.remove(); }, 2000);
+        }
+
+        init();
+    </script>
+</body>
+</html>

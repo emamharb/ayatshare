@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="dynamic-title">عرض السورة - موقع آيات | القرآن الكريم</title>
+<meta name="description" id="dynamic-description" content="موقع آيات لمشاركه الآيات القرآنية وتحميلها فى صورة نصوص وصور">
+<meta name="keywords" content="القرآن الكريم, سور القرآن, آيات قرآنية, تلاوة, تحميل آيات, موقع آيات, ayatshare, ayatshare.com">
+<meta name="author" content="موقع آيات">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#1a5e63">
+<meta property="og:title" id="og-title" content="عرض السورة - موقع آيات | القرآن الكريم">
+<meta property="og:description" id="og-description" content="عرض سور القرآن الكريم كاملة مع إمكانية تحميل الآيات ومشاركتها.">
+<meta property="og:type" content="article">
+<meta property="og:url" id="og-url" content="https://ayatshare.com/sura.html">
+<meta property="og:image" content="https://ayatshare.com/img/og-image.jpg">
+<meta property="og:image:secure_url" content="https://ayatshare.com/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="موقع آيات لعرض ومشاركة صور الآيات القرآنية">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:site_name" content="موقع آيات">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" id="twitter-title" content="عرض السورة - موقع آيات">
+<meta name="twitter:description" id="twitter-description" content="عرض سور القرآن الكريم كاملة مع إمكانية تحميل الآيات ومشاركتها.">
+<meta name="twitter:image" content="https://ayatshare.com/img/og-image.jpg">
+<meta name="twitter:image:alt" content="موقع آيات لعرض ومشاركة صور الآيات القرآنية">
+<meta name="twitter:site" content="@ayatshare">
+<link rel="canonical" id="canonical-url" href="https://ayatshare.com/sura.html">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com/ajax/libs">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="css/sura.css">
+</head>
+<body itemscope itemtype="https://schema.org/WebPage">
+<header role="banner">
+<div class="container">
+<div class="header-content">
+<div class="logo" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+<i class="fas fa-quran" aria-hidden="true"></i>
+<h1 itemprop="name">القرآن الكريم</h1>
+</div>
+<a href="index.html" class="back-btn" aria-label="العودة إلى صفحة السور">
+<i class="fas fa-arrow-right" aria-hidden="true"></i>
+العودة للسور
+</a>
+</div>
+</div>
+</header>
+<main class="container" role="main">
+<div class="sura-header" itemscope itemtype="https://schema.org/CreativeWork">
+<h1 class="sura-title" id="sura-title" itemprop="name">📖 عرض السورة</h1>
+<div class="sura-info" id="sura-info" itemprop="description"></div>
+<div class="progress-container">
+<div class="progress-bar" id="progress-bar"></div>
+</div>
+</div>
+<section class="search-section" aria-labelledby="search-title">
+<h2 id="search-title" class="sr-only">بحث في السورة</h2>
+<div class="search-container">
+<div class="search-box">
+<i class="fas fa-search" aria-hidden="true"></i>
+<input type="number" id="ayah-search" placeholder="ابحث برقم الآية..." min="1" aria-label="رقم الآية للبحث">
+</div>
+<button class="search-btn" id="search-btn" aria-label="بحث عن الآية">
+<i class="fas fa-search" aria-hidden="true"></i>
+ابحث
+</button>
+</div>
+<div class="quick-nav">
+<button class="nav-btn" data-ayah="1" aria-label="الانتقال إلى الآية الأولى">الآية الأولى</button>
+<button class="nav-btn" data-ayah="last" aria-label="الانتقال إلى الآية الأخيرة">الآية الأخيرة</button>
+<button class="nav-btn" id="clear-search" aria-label="مسح البحث">مسح البحث</button>
+</div>
+</section>
+<section class="search-results-section" id="search-results-section" aria-labelledby="search-results-title">
+<div class="search-results-header">
+<h3 id="search-results-title" class="search-results-title">نتائج البحث</h3>
+<button class="close-search-results" id="close-search-results" aria-label="إغلاق نتائج البحث">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="search-results-content" id="search-results-content">
+</div>
+</section>
+<div id="loading" class="loading" aria-live="polite">
+<i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+<p>جاري تحميل الآيات...</p>
+</div>
+<div id="error" class="error" style="display: none;" aria-live="assertive">
+<i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+<p>❌ لم يتم العثور على هذه السورة</p>
+</div>
+<div id="no-results" class="no-results" style="display: none;" aria-live="polite">
+<i class="fas fa-search" aria-hidden="true"></i>
+<p>لم يتم العثور على آية بهذا الرقم</p>
+</div>
+<section aria-labelledby="ayahs-title">
+<h2 id="ayahs-title" class="sr-only">آيات السورة</h2>
+<div class="ayahs-grid" id="ayahs"></div>
+</section>
+<div class="load-more-container" id="load-more-container" style="display: none;">
+<button class="load-more-btn" id="load-more-btn" aria-label="تحميل المزيد من الآيات">
+<i class="fas fa-arrow-down" aria-hidden="true"></i>
+تحميل المزيد من الآيات
+</button>
+</div>
+<div id="completion-message" class="completion-message" style="display: none;" aria-live="polite">
+<i class="fas fa-check-circle" aria-hidden="true"></i>
+<h3>تم تحميل جميع آيات السورة</h3>
+<p>تم عرض جميع الآيات المتاحة لهذه السورة</p>
+</div>
+</main>
+<div id="share-modal" class="share-modal" role="dialog" aria-labelledby="share-modal-title" aria-hidden="true">
+<div class="share-modal-content">
+<button class="share-modal-close" id="share-modal-close" aria-label="إغلاق نافذة المشاركة">×</button>
+<h3 id="share-modal-title" class="share-modal-title">مشاركة الآية</h3>
+<div class="share-options">
+<div class="share-option" data-platform="whatsapp" aria-label="مشاركة عبر واتساب">
+<i class="fab fa-whatsapp"></i>
+<span>واتساب</span>
+</div>
+<div class="share-option" data-platform="facebook" aria-label="مشاركة عبر فيسبوك">
+<i class="fab fa-facebook-f"></i>
+<span>فيسبوك</span>
+</div>
+<div class="share-option" data-platform="twitter" aria-label="مشاركة عبر تويتر">
+<i class="fab fa-twitter"></i>
+<span>تويتر</span>
+</div>
+</div>
+<div class="share-link-container">
+<input type="text" id="share-link-input" class="share-link-input" readonly aria-label="رابط المشاركة">
+<button class="copy-link-btn" id="copy-link-btn" aria-label="نسخ الرابط">
+<i class="fas fa-copy"></i>
+</button>
+</div>
+<div id="copy-success" class="copy-success" aria-live="polite">
+<i class="fas fa-check"></i> تم نسخ الرابط بنجاح
+</div>
+<div class="share-link-container" style="margin-top: 10px;">
+<input type="text" class="share-link-input" value="https://ayatshare.com" readonly aria-label="رابط موقع آيات">
+<button class="copy-link-btn" id="copy-site-btn" aria-label="نسخ رابط الموقع">
+<i class="fas fa-copy"></i>
+</button>
+</div>
+<div id="copy-site-success" class="copy-success" aria-live="polite" style="display: none;">
+<i class="fas fa-check"></i> تم نسخ رابط الموقع بنجاح
+</div>
+</div>
+</div>
+<footer role="contentinfo">
+<div class="container">
+<div class="footer-content">
+<p>آيات القرآن الكريم</p><br>
+<p style="background-color: #1a5e63; color: #fff; padding: 8px 12px; border-radius: 6px; display: inline-block; font-weight: bold;">
+صدقة جارية عن أبي وأمي 🤲
+</p>
+<div class="social-icons">
+<a href="https://www.facebook.com/emam.v1" aria-label="صفحتنا على فيسبوك"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+<a href="https://twitter.com/emamv1_" aria-label="حسابنا على تويتر"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+<a href="https://www.instagram.com/emam.v1" aria-label="حسابنا على إنستغرام"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+<a href="https://www.youtube.com/@emam.v1" aria-label="قناتنا على يوتيوب"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+</div>
+<a href="about.html" title="تعرف على موقع آيات" style="color:#f1c40f; text-decoration:none; font-weight:bold;">من نحن</a>
+<p class="copyright">جميع الحقوق محفوظة &copy; 2025</p>
+</div>
+<div class="container">
+<h6>Website designed by <a href="https://naw3ia-club.blogspot.com/p/mystore.html" style="color: #f1c40f; text-decoration: none; font-weight: bold;">Naw3iaClub</a></h6>
+</div>
+</div>
+</footer>
+<script type="application/ld+json" id="sura-schema">
+{
+"@context": "https://schema.org",
+"@type": "CreativeWork",
+"name": "سورة القرآن الكريم",
+"description": "عرض سورة من القرآن الكريم مع إمكانية تحميل الآيات ومشاركتها",
+"inLanguage": "ar",
+"author": {
+"@type": "Organization",
+"name": "القرآن الكريم"
+},
+"publisher": {
+"@type": "Organization",
+"name": "موقع آيات",
+"url": "https://ayatshare.com/"
+}
+}
+</script>
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "BreadcrumbList",
+"itemListElement": [
+{
+"@type": "ListItem",
+"position": 1,
+"name": "الرئيسية",
+"item": "https://ayatshare.com/"
+},
+{
+"@type": "ListItem",
+"position": 2,
+"name": "سور القرآن الكريم",
+"item": "https://ayatshare.com/index.html"
+},
+{
+"@type": "ListItem",
+"position": 3,
+"name": "عرض السورة",
+"item": ""
+}
+]
+}
+</script>
+<script src="js/sura.js"></script>
+</body>
+</html>
