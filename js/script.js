@@ -86,7 +86,7 @@ list.appendChild(card);
 function loadLocalSura(suraNum) {
 return new Promise((resolve, reject) => {
 const script = document.createElement("script");
-script.src = `quran_text/sura_${suraNum}.js`;
+script.src = new URL(`quran_text/sura_${suraNum}.js`, document.baseURI).href;
 script.onload = () => {
 resolve(window[`sura_${suraNum}`] || []);
 };
@@ -106,7 +106,7 @@ const img = new Image();
 img.onload = () => resolve(true);
 img.onerror = () => resolve(false);
 setTimeout(() => {
-img.src = `quran_images/sura_${suraNum}/ayah_${ayahIndex}.png`;
+img.src = new URL(`quran_images/sura_${suraNum}/ayah_${ayahIndex}.png`, document.baseURI).href;
 }, 50);
 });
 }
@@ -142,7 +142,7 @@ listenBtn.classList.add('playing');
 currentPlayingButton = listenBtn;
 const suraFolder = sura.toString().padStart(3, '0');
 const ayahFile = ayah.toString().padStart(3, '0');
-const audioPath = `sound/${suraFolder}/${suraFolder}${ayahFile}.mp3`;
+const audioPath = new URL(`sound/${suraFolder}/${suraFolder}${ayahFile}.mp3`, document.baseURI).href;
 currentAudio = new Audio(audioPath);
 currentAudio.addEventListener('loadeddata', function() {
 console.log(`🎵 جاري تشغيل: ${audioPath}`);
@@ -209,7 +209,7 @@ return { sura: randomSura, ayah: randomAyah };
 function downloadImage() {
 if (!currentAyah) return;
 const { sura, ayah } = currentAyah;
-const imageUrl = `quran_images/sura_${sura}/ayah_${ayah}.png`;
+const imageUrl = new URL(`quran_images/sura_${sura}/ayah_${ayah}.png`, document.baseURI).href;
 const link = document.createElement('a');
 link.href = imageUrl;
 link.download = `sura_${sura}_ayah_${ayah}.png`;
@@ -255,7 +255,7 @@ randomAyahImage.style.display = 'block';
 randomAyahImage.onerror = function() {
 randomAyahPlaceholder.innerHTML = `<i class="fas fa-exclamation-triangle"></i><span>خطأ في تحميل الآية</span>`;
 };
-randomAyahImage.src = `quran_images/sura_${sura}/ayah_${ayah}.png`;
+randomAyahImage.src = new URL(`quran_images/sura_${sura}/ayah_${ayah}.png`, document.baseURI).href;
 randomAyahResult.style.display = 'block';
 } else {
 console.warn(`⚠️ صورة الآية ${ayah} من سورة ${suras[sura-1]} غير متوفرة، جاري إعادة المحاولة...`);

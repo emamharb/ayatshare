@@ -57,7 +57,8 @@ const copyLinkBtn = document.getElementById("copy-link-btn");
 const copySuccess = document.getElementById("copy-success");
 const copySiteBtn = document.getElementById("copy-site-btn");
 const copySiteSuccess = document.getElementById("copy-site-success");
-const SITE_URL = "https://ayatshare.com";
+const SITE_BASE_URL = new URL("../", document.currentScript.src);
+const SITE_URL = SITE_BASE_URL.origin + SITE_BASE_URL.pathname.replace(/\/$/, "");
 
 // متغيرات عامة
 const BATCH_SIZE = 15;
@@ -71,11 +72,11 @@ let currentAudio = null;
 let currentPlayingButton = null;
 
 function localImagePath(suraNumber, ayahIndex) {
-return `quran_images/sura_${suraNumber}/ayah_${ayahIndex}.png`;
+return new URL(`quran_images/sura_${suraNumber}/ayah_${ayahIndex}.png`, document.baseURI).href;
 }
 
 function absoluteImageUrl(suraNumber, ayahIndex) {
-return `${SITE_URL}/quran_images/sura_${suraNumber}/ayah_${ayahIndex}.png`;
+return new URL(`quran_images/sura_${suraNumber}/ayah_${ayahIndex}.png`, SITE_BASE_URL).href;
 }
 
 function getAyahSnippet(ayahIndex, maxLength = 90) {
@@ -151,7 +152,7 @@ return false;
 function loadLocalSura(suraNum) {
 return new Promise((resolve, reject) => {
 const script = document.createElement("script");
-script.src = `quran_text/sura_${suraNum}.js`;
+script.src = new URL(`quran_text/sura_${suraNum}.js`, document.baseURI).href;
 script.onload = () => {
 resolve(window[`sura_${suraNum}`] || []);
 };
